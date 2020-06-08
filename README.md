@@ -35,7 +35,7 @@ The example of the model was as follows:
 4. Training and testing data was split at 80-20 (but can be tweaked by the user as an input).
 5. k = 3 was set (can be changed via user input), distance matrix used was Euclidean distance (but can be changed to            Manhattan).
 
-The model was run 5 times, and the <b>average test accuracy</b> recorded was <b>0.738983</b>. (The reason the accuracy does not stay the same is that the order of the data points were randomised on each run, hence randomising the points in the training and testing sets respectively.
+The model was run 5 times, and the <b>average test accuracy</b> recorded was <b>0.64765</b>. (The reason the accuracy does not stay the same is that the order of the data points were randomised on each run, hence randomising the points in the training and testing sets respectively.
 
 ---
 
@@ -46,14 +46,14 @@ This repo consists of four Python files and 2 folders.
 - intel_dataset.py -> formatting and normalizing features and labels to be used from the dataset
 - kNN_output.py -> utilises my implementations from scratch to train a kNN model and produce an output
 - kNN.py -> main file for kNN implementation
-- preprocessing.py -> converts training/testing data into suitable arrays for the kNN model, splits dataset into training/testing groups & basic visualisation of training/testing data points
+- preprocessing.py -> converts training/testing data into suitable arrays for the kNN model, splits dataset into training/testing groups & basic visualisation of training/testing data points (UNUSED)
 
 If you would like more information on each of the files, I have written some annotations on each of them. (ie. their input/output types, how libraries are used, reasons for manipulating data points etc.)
 
 ---
-The image below shows the data distribution. It is clear that the 'Announced' process is severely underrepresented and can affect the accuracy of the predictions. One way to counter this is to completely remove data points of such status from the training and testing inputs. This may be viable if I am not interested in the status. Alternatively, the feature selection can be expanded to include more of such points from the dataset.
+The image below shows the data distribution. It is clear that the 'Announced' (purple dots) process is severely underrepresented and can affect the accuracy of the predictions. One way to counter this is to completely remove data points of such status from the training and testing inputs. This may be viable if I am not interested in the status. Alternatively, the feature selection can be expanded to include more of such points from the dataset.
 
-![image](./screenshots/cache_size_base_speed.png)
+![image](./screenshots/three_features_comparison.png)
 
 ## Data Source
 

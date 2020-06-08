@@ -4,8 +4,10 @@ import numpy as np
 """
 This is my implementation of data preprocessing for use in my kNN implementation.
 
+**THIS LIBRARY IS NOT USED IN THE FINAL CALCULATIONS**
+
 Features include:
-    1) Inputs are plain python lists or list of lists.
+    1) Inputs are plain python lists or list of lists. 
     2) Returned values are converted to numpy arrays, so no further pre-processing needs to be done after using this library.
     3) Variable split index, default is set to 80-20.
     4) Scatter plot of features (2D) - compare 2 features at a time, which can be varied by the user.

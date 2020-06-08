@@ -1,19 +1,20 @@
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
 import numpy as np
 
 from preprocessing import TrainTestSplit
 from kNN import kNearestNeighbours
 import intel_dataset
 
-
-#splitting data
-data_split = TrainTestSplit(intel_dataset.cleaned_features, intel_dataset.cleaned_labels)
-
-X_train, X_test, y_train, y_test = data_split.split()
-
 #initializing kNN classifier
 knn = kNearestNeighbours(k = 3)
 
-knn.fit(X_train = X_train, y_train = y_train, X_test = X_test, y_test = y_test)
+knn.fit(
+    X_train = np.array(intel_dataset.X_train), 
+    y_train = np.array(intel_dataset.y_train), 
+    X_test = np.array(intel_dataset.X_test), 
+    y_test = np.array(intel_dataset.y_test)
+    )
 
 #input features are as follows: ['Cores', 'Cache Size', 'Base Speed']
 
@@ -38,6 +39,18 @@ predictions = knn.predicted_labels(x = np.array(normalized_input))
 #returns a numpy array of predictions
 print(predictions)
 
-#placed at the end to ensure that graphs display after model has been trained
-data_split.plot_all(x_axis = 1, y_axis = 2)
-data_split.plot_all(x_axis = 0, y_axis = 2)
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+
+scatter_plot = ax.scatter(
+    xs = [x[0] for x in (intel_dataset.X_train + intel_dataset.X_test)], 
+    ys = [x[1] for x in (intel_dataset.X_train + intel_dataset.X_test)],  
+    zs = [x[2] for x in (intel_dataset.X_train + intel_dataset.X_test)], 
+    c = [y for y in (intel_dataset.y_train + intel_dataset.y_test)],
+    )
+plt.title("Entire dataset")
+ax.set_xlabel('Cores')
+ax.set_ylabel('Cache Size')
+ax.set_zlabel('Base Speed')
+
+plt.show()
